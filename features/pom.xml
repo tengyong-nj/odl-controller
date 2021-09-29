@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Copyright © 2014, 2018 Cisco Systems, Inc. and others.
+
+ This program and the accompanying materials are made available under the
+ terms of the Eclipse Public License v1.0 which accompanies this distribution,
+ and is available at http://www.eclipse.org/legal/epl-v10.html
+ -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.opendaylight.odlparent</groupId>
+    <artifactId>odlparent-lite</artifactId>
+    <version>8.1.2</version>
+    <relativePath/>
+  </parent>
+
+  <groupId>org.opendaylight.controller</groupId>
+  <artifactId>features-aggregator</artifactId>
+  <version>3.0.8</version>
+  <packaging>pom</packaging>
+
+  <properties>
+    <maven.deploy.skip>true</maven.deploy.skip>
+    <maven.install.skip>true</maven.install.skip>
+  </properties>
+
+  <modules>
+    <!-- Common infra to cut down definitions -->
+    <module>single-feature-parent</module>
+
+    <!-- Production features -->
+    <module>features-controller</module>
+
+    <!-- Experimental features -->
+    <module>features-controller-experimental</module>
+    <module>odl-controller-exp-netty-config</module>
+    <module>odl-controller-exp-messagebus</module>
+
+    <!-- CSIT features -->
+    <module>features-controller-testing</module>
+    <module>odl-clustering-test-app</module>
+    <module>odl-mdsal-benchmark</module>
+
+    <!-- Scala/Akka features -->
+    <module>odl-controller-scala</module>
+    <module>odl-controller-akka</module>
+
+    <!-- Single features, to be cleaned up -->
+    <module>odl-controller-blueprint</module>
+    <module>odl-controller-mdsal-common</module>
+    <module>odl-controller-model-topology</module>
+    <module>odl-jolokia</module>
+    <module>odl-mdsal-broker-local</module>
+    <module>odl-mdsal-broker</module>
+    <module>odl-mdsal-clustering-commons</module>
+    <module>odl-mdsal-distributed-datastore</module>
+    <module>odl-mdsal-model-inventory</module>
+    <module>odl-mdsal-remoterpc-connector</module>
+    <module>odl-toaster</module>
+  </modules>
+</project>

@@ -1,0 +1,33 @@
+/*
+ * Copyright (c) 2013 Cisco Systems, Inc. and others.  All rights reserved.
+ *
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License v1.0 which accompanies this distribution,
+ * and is available at http://www.eclipse.org/legal/epl-v10.html
+ */
+package org.opendaylight.controller.config.yang.netty.threadgroup;
+
+import io.netty.channel.nio.NioEventLoopGroup;
+import java.util.concurrent.TimeUnit;
+
+public final class NioEventLoopGroupCloseable extends NioEventLoopGroup implements AutoCloseable {
+    private NioEventLoopGroupCloseable(final int threadCount) {
+        super(threadCount);
+    }
+
+    private NioEventLoopGroupCloseable() {
+    }
+
+    @Override
+    public void close() {
+        shutdownGracefully(0, 1, TimeUnit.SECONDS);
+    }
+
+    public static NioEventLoopGroupCloseable newInstance(final Integer threadCount) {
+        if (threadCount == null || threadCount <= 0) {
+            return new NioEventLoopGroupCloseable();
+        }
+
+        return new NioEventLoopGroupCloseable(threadCount);
+    }
+}

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- vi: set et smarttab sw=4 tabstop=4: -->
+<!--
+Copyright (c) 2014 Cisco Systems, Inc. and others.  All rights reserved.
+
+This program and the accompanying materials are made available under the
+terms of the Eclipse Public License v1.0 which accompanies this distribution,
+and is available at http://www.eclipse.org/legal/epl-v10.html
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.opendaylight.odlparent</groupId>
+    <artifactId>bundle-parent</artifactId>
+    <version>8.1.2</version>
+    <relativePath/>
+  </parent>
+
+  <groupId>org.opendaylight.controller</groupId>
+  <artifactId>mdsal-it-base</artifactId>
+  <version>3.0.8</version>
+  <packaging>bundle</packaging>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.opendaylight.mdsal</groupId>
+        <artifactId>mdsal-artifacts</artifactId>
+        <version>7.0.7</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.opendaylight.controller</groupId>
+        <artifactId>controller-artifacts</artifactId>
+        <version>${project.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.opendaylight.odlparent</groupId>
+      <artifactId>opendaylight-karaf-empty</artifactId>
+      <type>zip</type>
+    </dependency>
+    <dependency>
+      <groupId>org.opendaylight.mdsal</groupId>
+      <artifactId>mdsal-binding-api</artifactId>
+    </dependency>
+        <!-- Dependencies for pax exam karaf container -->
+    <dependency>
+        <groupId>org.ops4j.pax.exam</groupId>
+        <artifactId>pax-exam-container-karaf</artifactId>
+        <scope>compile</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.ops4j.pax.exam</groupId>
+        <artifactId>pax-exam-junit4</artifactId>
+        <scope>compile</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.ops4j.pax.exam</groupId>
+        <artifactId>pax-exam</artifactId>
+        <scope>compile</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.ops4j.pax.tipi</groupId>
+        <artifactId>org.ops4j.pax.tipi.junit</artifactId>
+        <version>4.12.0.1</version>
+        <scope>runtime</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.ops4j.pax.tipi</groupId>
+        <artifactId>org.ops4j.pax.tipi.hamcrest.core</artifactId>
+        <version>1.3.0.1</version>
+        <scope>runtime</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.ops4j.pax.url</groupId>
+        <artifactId>pax-url-aether</artifactId>
+        <scope>compile</scope>
+    </dependency>
+
+    <!-- Referenced by pax-exam-features, needs to be pulled into local repository -->
+    <dependency>
+        <groupId>org.ops4j.base</groupId>
+        <artifactId>ops4j-base-monitors</artifactId>
+        <version>1.5.1</version>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.geronimo.specs</groupId>
+        <artifactId>geronimo-atinject_1.0_spec</artifactId>
+        <version>1.0</version>
+    </dependency>
+
+    <dependency>
+        <groupId>org.apache.karaf.features</groupId>
+        <artifactId>org.apache.karaf.features.core</artifactId>
+        <version>${karaf.version}</version>
+        <scope>compile</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.osgi</groupId>
+        <artifactId>osgi.core</artifactId>
+        <scope>compile</scope>
+    </dependency>
+    <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <scope>compile</scope>
+    </dependency>
+  </dependencies>
+</project>

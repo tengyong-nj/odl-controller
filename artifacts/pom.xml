@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- vi: set et smarttab sw=4 tabstop=4: -->
+<!--
+    Copyright (c) 2014 Cisco Systems, Inc. and others.  All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v1.0 which accompanies this distribution,
+    and is available at http://www.eclipse.org/legal/epl-v10.html
+ -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.opendaylight.odlparent</groupId>
+        <artifactId>odlparent-lite</artifactId>
+        <version>8.1.2</version>
+        <relativePath/>
+    </parent>
+
+    <groupId>org.opendaylight.controller</groupId>
+    <artifactId>controller-artifacts</artifactId>
+    <version>3.0.8</version>
+    <packaging>pom</packaging>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- Repackaged Akka -->
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>repackaged-akka</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!-- Core API/implementation -->
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>sal-common-util</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!-- Test support -->
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>sal-test-model</artifactId>
+                <version>${project.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>sal-binding-it</artifactId>
+                <version>${project.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>mdsal-it-base</artifactId>
+                <version>${project.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <!-- Base model augmentations -->
+            <dependency>
+                <groupId>org.opendaylight.controller.model</groupId>
+                <artifactId>model-inventory</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.opendaylight.controller.model</groupId>
+                <artifactId>model-topology</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!-- Clustered implementation -->
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>sal-clustering-commons</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>sal-clustering-commons</artifactId>
+                <version>${project.version}</version>
+                <type>test-jar</type>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>sal-clustering-config</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>sal-distributed-datastore</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>sal-distributed-eos</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>sal-remoterpc-connector</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.opendaylight.controller</groupId>
+                <artifactId>sal-akka-raft</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.opendaylight.controller</groupId>
+                <artifactId>sal-akka-raft</artifactId>
+                <version>${project.version}</version>
+                <type>test-jar</type>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.opendaylight.controller</groupId>
+                <artifactId>sal-akka-raft-example</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.opendaylight.controller</groupId>
+                <artifactId>sal-akka-segmented-journal</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.opendaylight.controller</groupId>
+                <artifactId>cds-access-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.opendaylight.controller</groupId>
+                <artifactId>cds-access-client</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.opendaylight.controller</groupId>
+                <artifactId>cds-access-client</artifactId>
+                <version>${project.version}</version>
+                <type>test-jar</type>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.opendaylight.controller</groupId>
+                <artifactId>sal-cluster-admin-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.opendaylight.controller</groupId>
+                <artifactId>sal-cluster-admin-impl</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.opendaylight.controller</groupId>
+                <artifactId>cds-dom-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.opendaylight.controller</groupId>
+                <artifactId>cds-mgmt-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!-- Toaster -->
+            <dependency>
+                <groupId>org.opendaylight.controller.samples</groupId>
+                <artifactId>sample-toaster</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.opendaylight.controller.samples</groupId>
+                <artifactId>sample-toaster-consumer</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.opendaylight.controller.samples</groupId>
+                <artifactId>sample-toaster-provider</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.opendaylight.controller.samples</groupId>
+                <artifactId>toaster-config</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.opendaylight.controller.samples</groupId>
+                <artifactId>features-toaster</artifactId>
+                <version>${project.version}</version>
+                <classifier>features</classifier>
+                <type>xml</type>
+                <scope>runtime</scope>
+            </dependency>
+
+            <!-- MessageBus -->
+            <dependency>
+                <groupId>org.opendaylight.controller</groupId>
+                <artifactId>messagebus-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.opendaylight.controller</groupId>
+                <artifactId>messagebus-spi</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.opendaylight.controller</groupId>
+                <artifactId>messagebus-impl</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.opendaylight.controller</groupId>
+                <artifactId>messagebus-util</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>odl-controller-exp-messagebus</artifactId>
+                <version>${project.version}</version>
+                <type>xml</type>
+                <classifier>features</classifier>
+            </dependency>
+
+            <!-- Clustering system test support -->
+            <dependency>
+                <groupId>org.opendaylight.controller.samples</groupId>
+                <artifactId>clustering-it-config</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.opendaylight.controller.samples</groupId>
+                <artifactId>clustering-it-model</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.opendaylight.controller.samples</groupId>
+                <artifactId>clustering-it-provider</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!-- Config files -->
+            <dependency>
+                <!-- finalname="configuration/initial/akka.conf" -->
+                <groupId>${project.groupId}</groupId>
+                <artifactId>sal-clustering-config</artifactId>
+                <version>${project.version}</version>
+                <type>xml</type>
+                <classifier>akkaconf</classifier>
+            </dependency>
+            <dependency>
+                <!-- finalname="configuration/factory/akka.conf" override="true" -->
+                <groupId>${project.groupId}</groupId>
+                <artifactId>sal-clustering-config</artifactId>
+                <version>${project.version}</version>
+                <type>xml</type>
+                <classifier>factoryakkaconf</classifier>
+            </dependency>
+            <dependency>
+                <!-- finalname="configuration/initial/module-shards.conf" -->
+                <groupId>${project.groupId}</groupId>
+                <artifactId>sal-clustering-config</artifactId>
+                <version>${project.version}</version>
+                <type>xml</type>
+                <classifier>moduleshardconf</classifier>
+            </dependency>
+            <dependency>
+                <!-- finalname="configuration/initial/modules.conf" -->
+                <groupId>${project.groupId}</groupId>
+                <artifactId>sal-clustering-config</artifactId>
+                <version>${project.version}</version>
+                <type>xml</type>
+                <classifier>moduleconf</classifier>
+            </dependency>
+            <dependency>
+                <!-- finalname="etc/org.opendaylight.controller.cluster.datastore.cfg" -->
+                <groupId>${project.groupId}</groupId>
+                <artifactId>sal-clustering-config</artifactId>
+                <version>${project.version}</version>
+                <type>cfg</type>
+                <classifier>datastore</classifier>
+            </dependency>
+
+            <!-- Production Features -->
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>features-controller</artifactId>
+                <version>${project.version}</version>
+                <classifier>features</classifier>
+                <type>xml</type>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>odl-controller-akka</artifactId>
+                <version>${project.version}</version>
+                <type>xml</type>
+                <classifier>features</classifier>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>odl-controller-scala</artifactId>
+                <version>${project.version}</version>
+                <type>xml</type>
+                <classifier>features</classifier>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>odl-mdsal-broker</artifactId>
+                <version>${project.version}</version>
+                <type>xml</type>
+                <classifier>features</classifier>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>odl-mdsal-broker-local</artifactId>
+                <version>${project.version}</version>
+                <type>xml</type>
+                <classifier>features</classifier>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>odl-mdsal-clustering-commons</artifactId>
+                <version>${project.version}</version>
+                <type>xml</type>
+                <classifier>features</classifier>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>odl-controller-mdsal-common</artifactId>
+                <version>${project.version}</version>
+                <type>xml</type>
+                <classifier>features</classifier>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>odl-controller-blueprint</artifactId>
+                <version>${project.version}</version>
+                <type>xml</type>
+                <classifier>features</classifier>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>odl-mdsal-distributed-datastore</artifactId>
+                <version>${project.version}</version>
+                <type>xml</type>
+                <classifier>features</classifier>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>odl-mdsal-remoterpc-connector</artifactId>
+                <version>${project.version}</version>
+                <type>xml</type>
+                <classifier>features</classifier>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>odl-mdsal-model-inventory</artifactId>
+                <version>${project.version}</version>
+                <type>xml</type>
+                <classifier>features</classifier>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>odl-controller-model-topology</artifactId>
+                <version>${project.version}</version>
+                <type>xml</type>
+                <classifier>features</classifier>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>odl-toaster</artifactId>
+                <version>${project.version}</version>
+                <type>xml</type>
+                <classifier>features</classifier>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>odl-jolokia</artifactId>
+                <version>${project.version}</version>
+                <type>xml</type>
+                <classifier>features</classifier>
+            </dependency>
+
+            <!-- CSIT and other testing Features -->
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>features-controller-testing</artifactId>
+                <version>${project.version}</version>
+                <classifier>features</classifier>
+                <type>xml</type>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>odl-mdsal-benchmark</artifactId>
+                <version>${project.version}</version>
+                <type>xml</type>
+                <classifier>features</classifier>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>odl-clustering-test-app</artifactId>
+                <version>${project.version}</version>
+                <type>xml</type>
+                <classifier>features</classifier>
+            </dependency>
+
+            <!-- Benchmarks -->
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>benchmark-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>dsbenchmark</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>ntfbenchmark</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>rpcbenchmark</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!-- Expertimental Features -->
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>features-controller-experimental</artifactId>
+                <version>${project.version}</version>
+                <classifier>features</classifier>
+                <type>xml</type>
+            </dependency>
+
+            <!-- Config remnants -->
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>netty-event-executor-config</artifactId>
+                <version>0.14.8</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>netty-threadgroup-config</artifactId>
+                <version>0.14.8</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>netty-timer-config</artifactId>
+                <version>0.14.8</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>threadpool-config-api</artifactId>
+                <version>0.14.8</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>threadpool-config-impl</artifactId>
+                <version>0.14.8</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>odl-controller-exp-netty-config</artifactId>
+                <version>${project.version}</version>
+                <classifier>features</classifier>
+                <type>xml</type>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>
